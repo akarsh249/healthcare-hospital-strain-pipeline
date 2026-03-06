@@ -54,7 +54,7 @@ Tableau Dashboard (Visualization)
 ![Dashboard](screenshots/dashboard_overview.png)
 
 ## Hospital Strain Map
-![Strain Map](screenshots/strain_map.png)
+![Strain Map](screenshots/strain%20map.png)
 
 ## Top States by Strain
 ![Top States](screenshots/top_states.png)
@@ -87,4 +87,5 @@ ORDER BY AVG(strain_score) DESC;
 
 Akarsh Thota  
 Master's in Management Information Systems  
+
 Northern Illinois University
