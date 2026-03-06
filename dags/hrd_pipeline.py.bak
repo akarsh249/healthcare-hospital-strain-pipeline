@@ -1,0 +1,36 @@
+from datetime import datetime, timedelta
+
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+
+from src.ingestion.fetch_hrd import run_ingestion
+from src.transforms.bronze_to_gold import run_bronze_to_gold
+
+default_args = {
+    "owner": "akarsh",
+    "retries": 2,
+    "retry_delay": timedelta(minutes=2),
+}
+
+with DAG(
+    dag_id="hrd_near_realtime_pipeline",
+    start_date=datetime(2026, 2, 1),
+    schedule="*/10 * * * *",
+    catchup=False,
+    default_args=default_args,
+    tags=["project2", "healthcare", "streaming-ish"],
+) as dag:
+
+    ingest = PythonOperator(
+        task_id="ingest_hrd_to_bronze",
+        python_callable=run_ingestion,
+    )
+
+    transform = PythonOperator(
+        task_id="bronze_to_gold_scoring",
+        python_callable=lambda **ctx: run_bronze_to_gold(
+            s3_key=ctx["ti"].xcom_pull(task_ids="ingest_hrd_to_bronze")["s3_key"]
+        ),
+    )
+
+    ingest >> transform
