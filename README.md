@@ -92,4 +92,21 @@ Master's in Management Information Systems
 
 Northern Illinois University
 
+---
+
+## Project Structure
+
+healthcare-hospital-strain-pipeline
+│
+├── dags/                # Airflow DAG pipeline
+├── docker/              # Docker configuration
+├── sql/                 # Database initialization & queries
+├── src/                 # Helper scripts
+├── tableau/             # Tableau dashboard file
+├── screenshots/         # Dashboard images for README
+│
+├── docker-compose.yml   # Local pipeline orchestration
+├── README.md
+└── .gitignore
+
 
