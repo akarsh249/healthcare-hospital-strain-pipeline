@@ -1,6 +1,8 @@
 # US Hospital Strain Monitoring Pipeline
 
-This project builds an end-to-end healthcare data pipeline that ingests hospital capacity data from the CDC, processes hospital utilization metrics, and visualizes hospital system strain across U.S. states using an interactive Tableau dashboard.
+End-to-end healthcare data engineering pipeline that ingests CDC hospital operations data, calculates hospital strain metrics, and visualizes system pressure across U.S. states using Tableau dashboards.
+
+Built with **Airflow, Docker, MinIO, PostgreSQL, and Tableau**.
 
 ---
 
@@ -89,4 +91,5 @@ Akarsh Thota
 Master's in Management Information Systems  
 
 Northern Illinois University
+
 
